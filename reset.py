@@ -11,7 +11,7 @@ from runner import runner_serial
 @runner_serial
 def reset(serial):
     with pyAPT.Controller(serial_number=serial) as con:
-      print '\tResetting controller parameters to EEPROM defaults'
+      print('\tResetting controller parameters to EEPROM defaults')
       con.reset_parameters()
 
 if __name__ == '__main__':

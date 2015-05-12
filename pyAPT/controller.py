@@ -399,8 +399,8 @@ class Controller(object):
     acceleration = min(acceleration, self.max_acceleration)
     max_velocity = min(max_velocity, self.max_velocity)
 
-    acc_apt = acceleration * self.acceleration_scale
-    max_vel_apt = max_velocity * self.velocity_scale
+    acc_apt = int(acceleration * self.acceleration_scale)
+    max_vel_apt = int(max_velocity * self.velocity_scale)
 
     """
     <: small endian
@@ -482,11 +482,11 @@ class Controller(object):
 
     sn,model,hwtype,fwver,notes,_,hwver,modstate,numchan = info
 
-    fwverminor = ord(fwver[0])
-    fwverinterim = ord(fwver[1])
-    fwvermajor = ord(fwver[2])
+    fwverminor = fwver[0]
+    fwverinterim = fwver[1]
+    fwvermajor = fwver[2]
 
-    fwver = '%d.%d.%d'%(fwvermajor,fwverinterim, fwverminor)
+    fwver = '%d.%d.%d'%(fwver[2],fwver[1],fwver[0])
 
     return (sn,model,hwtype,fwver,notes,hwver,modstate,numchan)
 

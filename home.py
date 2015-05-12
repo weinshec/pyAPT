@@ -13,12 +13,10 @@ from runner import runner_serial
 @runner_serial
 def home(serial):
   with pyAPT.MTS50(serial_number=serial) as con:
-    print '\tIdentifying controller'
+    print('\tIdentifying controller')
     con.identify()
-    print '\tHoming parameters:', con.request_home_params()
-    print '\tHoming stage...',
-    con.home(velocity=2)
-    print 'homed'
+    print('\tHoming parameters:', con.request_home_params())
+    print('\tHoming stage...', con.home(velocity=2), 'homed')
 
 if __name__ == '__main__':
   import sys
