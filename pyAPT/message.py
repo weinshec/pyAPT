@@ -53,10 +53,11 @@ class Message(_Message):
                       src = hd.src)
 
   def __new__(cls, messageID, dest=0x50, src=0x01, param1=0, param2=0, data=None):
-    assert(type(messageID) == int)
+    assert type(messageID) == int, 'messageID is not an integer value'
     if data:
-      assert(param1 == 0 and param2 == 0)
-      assert(type(data) in [list, tuple, str])
+      assert (param1 == 0 and param2 == 0), 'param1 or param2 not zero'
+      #assert type(data) in [list, tuple, str]
+      assert type(data) == bytes, 'data is of type %s. should be <bytes>' % type(data)
 
       if type(data) == str:
         data = [ord(c) for c in data]
@@ -69,8 +70,8 @@ class Message(_Message):
                                           src,
                                           data)
     else:
-      assert(type(param1) == int)
-      assert(type(param2) == int)
+      assert type(param1) == int , 'param1 is not an integer value'
+      assert type(param2) == int , 'param2 is not an integer value'  
       return super(Message, cls).__new__(Message,
                                           messageID,
                                           param1,
@@ -134,9 +135,9 @@ class Message(_Message):
   @property
   def datastring(self):
     if type(self.data) == str:
-      return self.data
+      return bytes(self.data,'latin-1')
     else:
-      return ''.join(chr(x) for x in self.data)
+      return bytes(''.join(chr(x) for x in self.data), 'latin-1')
 
   @property
   def datalength(self):
