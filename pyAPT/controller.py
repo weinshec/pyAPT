@@ -5,8 +5,8 @@ import pylibftdi
 import time
 import struct as st
 
-from message import Message
-import message
+from .message import Message
+from . import message
 
 class OutOfRangeError(Exception):
   def __init__(self, requested, allowed):
@@ -85,7 +85,7 @@ class Controller(object):
 
   def close(self):
     if not self._device.closed:
-      print 'Closing connnection to controller',self.serial_number
+      print('Closing connnection to controller',self.serial_number)
       self.stop(wait=False)
       # XXX we might want a timeout here, or this will block forever
       self._device.close()

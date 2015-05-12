@@ -120,7 +120,7 @@ class Message(_Message):
                       self.dest,
                       self.src)
     if verbose:
-      print bytes(self),'=',map(lambda x:hex(ord(x)), ret)
+      print(bytes(self),'=',map(lambda x:hex(ord(x)), ret))
 
     return ret
 
