@@ -472,7 +472,12 @@ class Controller(object):
         self._send_message(movemsg)
    
         if wait:
-            msg = self._wait_message(message.MGMSG_MOT_MOVE_COMPLETED)
+            #msg = self._wait_message(message.MGMSG_MOT_MOVE_COMPLETED)
+            while True:
+                msg = self._read_message()
+                if msg.messageID == message.MGMSG_MOT_MOVE_STOPPED \
+                        or msg.messageID == message.MGMSG_MOT_MOVE_COMPLETED:
+                    break
             sts = ControllerStatus(self, msg.datastring)
             # I find sometimes that after the move completed message there is
             # still some jittering. This aims to wait out the jittering so we
