@@ -11,16 +11,24 @@ __email__   = "christoph.weinsheimer@desy.de"
 __version__ = "0.2"
 
 
-__all__ = ['Message', 'Controller', 'add_PID', 'clear_PIDs', 'OutOfRangeError', 'MTS50', 'Z825B']
+__all__ = ['Message',
+           'Controller',
+           'ControllerStatus',
+           'add_PID',
+           'clear_PIDs',
+           'OutOfRangeError',
+           'MTS50',
+           'Z825B']
 
 
 from pyAPT import message, controller, mts50, z825b
 
-Message         = message.Message
-Controller      = controller.Controller
-OutOfRangeError = controller.OutOfRangeError
-MTS50           = mts50.MTS50
-Z825B           = z825b.Z825B
+Message          = message.Message
+Controller       = controller.Controller
+ControllerStatus = controller.ControllerStatus
+OutOfRangeError  = controller.OutOfRangeError
+MTS50            = mts50.MTS50
+Z825B            = z825b.Z825B
 
 
 import pylibftdi
