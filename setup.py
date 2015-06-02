@@ -6,7 +6,6 @@ setup(
     author           = 'Christoph Weinsheimer',
     author_email     = 'christoph.weinsheimer@desy.de',
     packages         = ['pyAPT'],
-    scripts          = [],
     description      = 'Controller module for Thorlabs motorized stages',
-    install_requires = [],
+    install_requires = ['pylibftdi'],
 )
