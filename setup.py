@@ -1,11 +1,16 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name             = 'pyAPT',
-    version          = '0.1.0',
+    version          = '0.1',
+    packages         = find_packages(),
+
+    install_requires = ['pylibftdi>=0.14'],
+
+    package_data     = {'': ['99-libftdi.rules']},
+
     author           = 'Christoph Weinsheimer',
     author_email     = 'christoph.weinsheimer@desy.de',
-    packages         = ['pyAPT'],
-    description      = 'Controller module for Thorlabs motorized stages',
-    install_requires = ['pylibftdi'],
+    description      = 'Python3 Controller module for Thorlabs motorized stages',
+    license          = 'MIT',
 )
